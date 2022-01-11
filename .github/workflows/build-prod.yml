@@ -29,7 +29,7 @@ jobs:
     - name: Archive staging artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: view1
+        name: prod-view1
         path: view/build
 
   build-view2:
@@ -52,5 +52,5 @@ jobs:
     - name: Archive staging artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: view2
+        name: prod-view2
         path: view2/build
