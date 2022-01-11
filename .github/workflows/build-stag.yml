@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: './view'
+       working-directory: './view'
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 16.13.2
