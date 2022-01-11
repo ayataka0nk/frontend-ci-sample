@@ -13,12 +13,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js 16
+    - name: Use Node.js 16.13.2
       uses: actions/setup-node@v2
       with:
-        node-version: '16'
+        node-version: '16.13.2'
         cache: 'npm'
     - run: npm ci
     - run: npm run build
       env:
         REACT_APP_BUILD_ENV: 'stag'
+    - name: Archive staging artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: stag
+        path: build
