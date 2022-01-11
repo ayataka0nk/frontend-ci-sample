@@ -10,7 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: './view'
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 16.13.2
@@ -26,4 +28,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: stag
-        path: build
+        path: view/build
