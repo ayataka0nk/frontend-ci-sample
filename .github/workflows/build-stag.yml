@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-view1:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -19,9 +19,9 @@ jobs:
     - name: Use Node.js 16.13.2
       uses: actions/setup-node@v2
       with:
-        working-directory: './view'
         node-version: '16.13.2'
         cache: 'npm'
+        cache-dependency-path: './view/package-lock.json'
     - run: npm ci
     - run: npm run build
       env:
@@ -31,3 +31,26 @@ jobs:
       with:
         name: stag
         path: view/build
+
+  build-view2:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+       working-directory: './view2'
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 16.13.2
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.13.2'
+        cache: 'npm'
+        cache-dependency-path: './view2/package-lock.json'
+    - run: npm ci
+    - run: npm run build
+      env:
+        REACT_APP_BUILD_ENV: 'stag'
+    - name: Archive staging artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: stag
+        path: view2/build
