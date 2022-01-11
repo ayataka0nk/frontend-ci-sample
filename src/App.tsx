@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  console.log(process.env.REACT_APP_BUILD_ENV)
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +20,13 @@ function App() {
           Learn React
         </a>
       </header>
+      <div>
+        <div>Environmental Value Sample</div>
+        <div>
+          <div>REACT_APP_BUILD_ENV: </div>
+          <div>{process.env.REACT_APP_BUILD_ENV}</div>
+        </div>
+      </div>
     </div>
   );
 }
